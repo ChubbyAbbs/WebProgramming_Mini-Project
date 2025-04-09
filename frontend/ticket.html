@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="movieApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Book Ticket</title>
+  <link rel="stylesheet" href="styles/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script src="app.js"></script>
+  <script src="controllers/TicketController.js"></script>
+  <style>
+
+#bg-video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+}
+  
+  main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;   
+    align-items: center;          
+    text-align: center;       
+  }
+
+  img {
+    width: 500px;
+    height: auto;
+    margin-bottom: 20px;
+    border-radius: 10px;
+  }
+
+  #desc {
+    font-size: 25px;
+    color: #ffee00;
+    max-width: 600px;
+    margin-bottom: 20px;
+    font-style:normal;
+  }
+  
+  h1 {
+  font-size: 42px;
+  margin-bottom: 20px;
+  color: #cff2ff !important;
+}
+
+  button {
+    padding: 20px 20x;
+    font-size: 30px;
+    background-color: #5718df;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #218838;
+  }
+</style>
+
+</head>
+<body ng-controller="TicketController">
+
+  <video autoplay muted loop id="bg-video">
+    <source src="videos/vid_tickets.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+
+  <header>
+    <h1>{{ movie.title }}</h1>
+  </header>
+  <main>
+    <img ng-src="{{ movie.poster }}" alt="{{ movie.title }} poster">
+    <p id="desc"><b>{{ movie.description }}</b></p>
+    <button ng-click="goToSeatSelection()">Select Seats</button>
+  </main>
+</body>
+</html>

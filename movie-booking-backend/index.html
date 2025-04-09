@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="movieApp">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Your Show</title>
+  <link rel="stylesheet" href="styles/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script src="app.js"></script>
+  <script src="controllers/homeController.js"></script>
+</head>
+<body ng-controller="HomeController">
+
+  <!-- Background Video -->
+  <video autoplay muted loop id="bg-video">
+    <source src="videos/vid_tickets.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+
+  <!-- Overlay Content -->
+  <div class="overlay">
+    <header>
+      <h1 style="color: white;">Book Your Show</h1>
+      <nav>
+        <a href="login.html">Login</a> |
+        <a href="register.html">Register</a>
+      </nav>
+    </header>
+
+    <main>
+      <div class="movies">
+        <div class="movie-card" ng-repeat="movie in movies">
+          <img ng-src="{{movie.poster_url}}" alt="{{movie.title}}">
+          <h2>{{movie.title}}</h2>
+          <p>{{movie.description}}</p>
+          <a ng-href="ticket.html?movieId={{movie.id}}">Book Now</a>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

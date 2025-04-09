@@ -1,0 +1,262 @@
+/* Basic Reset */
+body, h1, h2, p, a {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  body {
+    background-color: #1d1d3a;
+    color: #b1f5f1;
+    overflow-x: hidden;
+  }
+  
+  /* Fullscreen Background Video */
+  #bg-video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    opacity: 80%;
+  }
+
+  .desc{
+    font-size: 60px;
+    font-family: 'Courier New', Courier, monospace;
+  }
+
+  /* image  */
+  img{
+    width:500px;
+    height: auto;
+  }
+  
+  /* Overlay with semi-transparency */
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding-top: 10px; /* 👈 Push content a bit from the top */
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #ccffff;
+  }
+
+  
+  header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  header h1 {
+    font-size: 3rem;
+    color: #194afe;
+    text-shadow: 0 0 15px #194afeaa;
+  }
+  
+  nav a {
+    color: #d43260;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+  }
+  
+  /* Movies Display */
+  .movies {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+  }
+  
+  /* Movie Cards */
+  .movie-card {
+    background: linear-gradient(145deg, #6921b5, #1d1d3a);
+    border-radius: 15px;
+    width: 250px;
+    padding: 20px;
+    text-align: center;
+    color: #b1f5f1;
+    box-shadow: 0 0 20px #001b7aaa;
+    transition: transform 0.5s, box-shadow 0.3s;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+  }
+  
+  .movie-card:hover {
+    transform: rotateY(10deg) scale(1.05);
+    box-shadow: 0 0 25px #b1f5f1aa;
+  }
+  
+  .movie-card img {
+    width: 100%;
+    border-radius: 10px;
+  }
+  
+  .movie-card h2 {
+    margin-top: 15px;
+    font-size: 1.5rem;
+  }
+  
+  .movie-card p {
+    font-size: 0.9rem;
+    margin: 10px 0;
+  }
+  
+  .movie-card a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    background-color: #2800b7;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  .movie-card a:hover {
+    background-color: #d43260;
+  }
+  /* Seating Section */
+.seating-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+}
+
+.screen {
+  background-color: #6921b5;
+  width: 70%;
+  text-align: center;
+  padding: 8px;
+  margin: auto;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #b1f5f1;
+  border-radius: 6px;
+  box-shadow: 0 0 15px #194afeaa;
+}
+
+.seat {
+  width: 25px;
+  height: 25px;
+  background-color: #194afe;
+  border-radius: 5px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 0 5px #194afe88;
+  cursor: pointer;
+}
+
+.seat:hover {
+  transform: scale(1.2) rotateX(10deg);
+  box-shadow: 0 0 10px #b1f5f1cc;
+}
+
+.seat.selected {
+  background-color: #d43260;
+  box-shadow: 0 0 12px #d43260bb;
+}
+
+.seat.occupied {
+  background-color: #444;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Confirm Button */
+.confirm-btn {
+  width: auto;
+  height: 100px;
+  margin-top: 30px;
+  padding: 12px 25px;
+  background-color: #6921b5;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 40px;
+  box-shadow: 0 0 10px #6921b5cc;
+  transition: all 0.3s;
+}
+
+.confirm-btn:hover {
+  background-color: #d43260;
+  box-shadow: 0 0 15px #d43260cc;
+  transform: scale(1.05);
+}
+
+.seats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+  gap: 10px;
+  max-width: 440px; /* 👈 limits the grid width so seats wrap */
+  margin: 20px auto;
+  justify-content: center;
+}
+
+  .seat {
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    background-color: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  .seat.selected {
+    background-color: #6c6;
+  }
+  .seat.occupied {
+    background-color: #f66;
+    cursor: not-allowed;
+  }
+
+  body, html {
+    height: 100%;
+    margin: 0;
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Optional dim overlay */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #ccffff;
+  }
+  
+  .screen {
+    background-color: #6200ea;
+    padding: 10px 80px;
+    margin: 20px 0;
+    border-radius: 20px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+  }
+
+ 
+
+  

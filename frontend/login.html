@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="movieApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link rel="stylesheet" href="styles/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script src="app.js"></script>
+  <script src="controllers/AuthController.js"></script>
+  <style>
+    #bg-video {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      min-width: 100%;
+      min-height: 100%;
+      z-index: -1;
+    }
+    body {
+      margin-top: 100px;
+    }
+    div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    img {
+      width: 500px;
+      height: auto;
+      margin-bottom: 20px;
+      border-radius: 10px;
+    }
+    input {
+      margin: 10px;
+      padding: 10px;
+      color: aliceblue;
+      font-size: 30px;
+      background: none;
+      border: none;
+      border-bottom: 2px solid #540303;
+    }
+    h {
+      font-size: 58px;
+      margin-bottom: 20px;
+      color: #cff2ff !important;
+    }
+    button {
+      margin-top: 20px;
+      padding: 20px;
+      font-size: 40px;
+      background-color: #5718df;
+      color: white;
+      border-radius: 15px;
+      cursor: pointer;
+      border: none;
+    }
+    ::placeholder {
+      color: rgb(205, 205, 205);
+      opacity: 1;
+      font-style: oblique;
+    }
+    button:hover {
+      background-color: #1c1e72;
+    }
+    p {
+      font-size: 25px;
+    }
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #ccffff;
+    }
+  </style>
+</head>
+<body ng-controller="AuthController" id="overlay">
+  <header>
+    <h><b>Login</b></h>
+  </header>
+
+  <!-- Background Video -->
+  <video autoplay muted loop id="bg-video">
+    <source src="videos/vid_tickets.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+
+  <div>
+    <form ng-submit="login()">
+      <input type="email" ng-model="user.email" placeholder="Email" required /><br>
+      <input type="password" ng-model="user.password" placeholder="Password" required /><br>
+      <button type="submit">Login</button>
+    </form>
+    <p>Don't have an account? <a href="register.html">Register here</a></p>
+  </div>
+</body>
+</html>

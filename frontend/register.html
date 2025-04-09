@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="movieApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Register</title>
+  <link rel="stylesheet" href="styles/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script src="app.js"></script>
+  <script src="controllers/AuthController.js"></script>
+  <style>
+    #bg-video {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      min-width: 100%;
+      min-height: 100%;
+      z-index: -1;
+    }
+
+    body {
+      margin-top: 100px;
+    }
+
+    div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    input {
+      margin: 10px;
+      padding: 10px;
+      color: aliceblue;
+      font-size: 30px;
+      background: none;
+      border: none;
+      border-bottom: 2px solid #540303;
+    }
+
+    h {
+      font-size: 58px;
+      margin-bottom: 20px;
+      color: #cff2ff !important;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 20px;
+      font-size: 40px;
+      background-color: #5718df;
+      color: white;
+      border-radius: 15px;
+      cursor: pointer;
+      border: none;
+    }
+
+    ::placeholder {
+      color: rgb(205, 205, 205);
+      opacity: 1;
+      font-style: oblique;
+    }
+
+    button:hover {
+      background-color: #1c1e72;
+    }
+
+    p {
+      font-size: 25px;
+    }
+
+    .success, .error {
+      font-size: 20px;
+      margin-top: 15px;
+      color: #90ee90;
+    }
+
+    .error {
+      color: #ff4c4c;
+    }
+  </style>
+</head>
+<body ng-controller="AuthController">
+  <header>
+    <h><b>Register</b></h>
+  </header>
+
+  <!-- Background Video -->
+  <video autoplay muted loop id="bg-video">
+    <source src="videos/vid_tickets.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+
+  <div>
+    <form ng-submit="register()">
+      <input type="email" ng-model="newUser.email" placeholder="E-Mail" required /><br>
+      <input type="text" ng-model="newUser.username" placeholder="Username" required /><br>
+      <input type="password" ng-model="newUser.password" placeholder="Password" required /><br>
+      <button type="submit">Register</button>
+    </form>
+    <p>Already have an account? <a href="login.html">Login here</a></p>
+
+    <div class="success" ng-if="registerSuccess">{{ registerSuccess }}</div>
+    <div class="error" ng-if="registerError">{{ registerError }}</div>
+  </div>
+</body>
+</html>

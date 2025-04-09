@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="movieApp">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Select Seats</title>
+  <link rel="stylesheet" href="styles/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script src="app.js"></script>
+  <script src="controllers/SeatController.js"></script>
+  <style>
+    .centres {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;   
+      align-items: center;          
+      text-align: center;       
+    }
+
+    .seat {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      margin: 5px;
+      background-color: #444;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      line-height: 40px;
+    }
+
+    .seat.selected {
+      background-color: #00b894;
+    }
+
+    .seat.occupied {
+      background-color: #d63031;
+      cursor: not-allowed;
+    }
+
+    .screen {
+      margin: 20px auto;
+      padding: 10px;
+      background: #ccc;
+      width: 200px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 20px;
+      font-size: 30px;
+      background-color: #5718df;
+      color: white;
+      border-radius: 15px;
+      cursor: pointer;
+      border: none;
+    }
+
+    button:hover {
+      background-color: #1c1e72;
+    }
+
+    .message {
+      margin-top: 10px;
+      font-size: 20px;
+      color: #00ffcc;
+    }
+
+    .error {
+      color: #ff4c4c;
+    }
+
+    #bg-video {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      min-width: 100%;
+      min-height: 100%;
+      z-index: -1;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      color: white;
+    }
+  </style>
+</head>
+<body ng-controller="SeatController">
+  <!-- Background Video -->
+  <video autoplay muted loop id="bg-video">
+    <source src="videos/cinema.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <div class="overlay centres">
+    <h1>Select Your Seats</h1>
+    <div class="screen">SCREEN</div>
+
+    <div>
+      <h2>{{ movie.title }}</h2>
+
+      <div class="seats">
+        <div 
+          class="seat" 
+          ng-repeat="seat in seats"
+          ng-click="toggleSeat(seat)"
+          ng-class="{ 'occupied': seat.occupied, 'selected': seat.selected }">
+          {{ seat.number }}
+        </div>
+      </div>
+
+      <button ng-click="confirmBooking()">Confirm Booking</button>
+
+      <div class="message" ng-if="bookingMessage">{{ bookingMessage }}</div>
+      <div class="message error" ng-if="bookingError">{{ bookingError }}</div>
+    </div>
+  </div>
+</body>
+</html>
